@@ -11,10 +11,10 @@ var express = require('express')
 		
 //init mysql connection
 connection = mysql.createConnection({
-	host      : pjson.db.host
-	,user     : pjson.db.user
-	,password : pjson.db.password
-	,database : pjson.db.database 
+	host      : '127.0.0.1'
+	,user     : 'root'
+	,password : 'admin'
+	,database : 'sakila' 
 });
 
 /**
@@ -232,8 +232,9 @@ var jplist = function(statuses, callback){
 	}
 		
 	//count database items for pagination
-	query = 'SELECT count(ID) as count FROM Item ' + filter + ' ' + sort;
+	query = 'SELECT count(ID) as count FROM `item` ' + filter + ' ' + sort;
 	
+	console.log("query1=", query);
 	stmt = connection.query(query, preparedParams, function(err, results){
 			
 		if(!err && _.isArray(results) && results.length > 0){
@@ -245,8 +246,8 @@ var jplist = function(statuses, callback){
 		}
 		
 		//init query with sort, filter and pagination
-		query = 'SELECT title, description, image, likes, keyword1, keyword2 FROM Item ' + filter + ' ' + sort + ' ' + paging;
-		
+		query = 'SELECT * FROM `item` ' + filter + ' ' + sort + ' ' + paging;
+		console.log("query 2=", query);
 		stmt = connection.query(query, preparedParams, function(err, results){
 		
 			callback({
@@ -269,6 +270,7 @@ router.post('/', function(req, res){
 	}
 	
 	new jplist(statuses, function(json){
+		
 		res.json(json);
 	});
 	
