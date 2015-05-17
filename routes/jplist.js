@@ -246,7 +246,7 @@ var jplist = function(statuses, callback){
 		}
 		
 		//init query with sort, filter and pagination
-		query = 'SELECT * FROM `item` ' + filter + ' ' + sort + ' ' + paging;
+		query = 'SELECT title, description, image, likes, keyword1, keyword2 FROM `item` ' + filter + ' ' + sort + ' ' + paging;
 		console.log("query 2=", query);
 		stmt = connection.query(query, preparedParams, function(err, results){
 		
@@ -269,6 +269,7 @@ router.post('/', function(req, res){
 		statuses = JSON.parse(unescape(statuses));
 	}
 	
+	console.log("statuses=", statuses);
 	new jplist(statuses, function(json){
 		
 		res.json(json);

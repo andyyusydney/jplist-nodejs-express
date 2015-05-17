@@ -1,5 +1,7 @@
 # ![jPList - jQuery Data Grid Controls - NodeJS Version](http://jplist.com/content/img/common/rocket-50.png) [jPList - jQuery Data Grid Controls - NodeJS Version](http://jplist.com)
 
+How to start the app: npm start
+
 **jPList** is a flexible jQuery plugin for sorting, pagination and filtering of any HTML structure (DIVs, UL/LI, tables, etc).
 This sample project uses NodeJS, Express and MySQL database. The data is in JSON format, and it's rendered on the client by [Handlebars templates](http://handlebarsjs.com). Any other javascript template library can be used instead of Handlebars, for example [Mustache templates](http://mustache.github.io), Underscore templates etc. Other server side options can be found [here](https://github.com/no81no/jplist).
 
